@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+    xmlns:gap       = "http://phonegap.com/ns/1.0"
+    xmlns:android   = "http://schemas.android.com/apk/res/android"
+    id              = "info.gaarf.cordova.commandoio"
+    version         = "0.0.1">
+
+    <name>
+      Commando.io
+    </name>
+    <description>
+        Mobile app for Commando.io
+    </description>
+    <author href="http://gaarf.info">
+        Gaarf
+    </author>
+
+    <content src="index.html" />
+    <access origin="*" />
+
+    <icon src="www/assets/img/favicon.png" />
+
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.statusbar" />
+
+    <preference name="Fullscreen" value="false" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="false"/>
+
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />
+
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="blackopaque" />
+
+    <!-- Android -->
+    <gap:config-file platform="android" parent="/manifest" mode="merge">
+        <supports-screens
+            android:xlargeScreens="true"
+            android:largeScreens="true"
+            android:smallScreens="true" />
+    </gap:config-file>
+
+    <platform name="android">
+      <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+      <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+      <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+      <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+
+      <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+      <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+      <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+      <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
+    </platform>
+
+
+    <!-- iOS -->
+    <platform name="ios">
+      <icon src="res/icon/ios/icon-57.png" height="57" width="57" />
+      <icon src="res/icon/ios/icon-72.png" height="72" width="72" />
+      <icon src="res/icon/ios/icon-57-2x.png" height="114" width="114" />
+      <icon src="res/icon/ios/icon-72-2x.png" height="144" width="144" />
+
+      <splash src="res/screen/ios/screen-iphone-portrait.png" height="480" width="320" />
+      <splash src="res/screen/ios/screen-iphone-portrait-2x.png" height="960" width="640" />
+      <splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" height="1136" width="640" />
+      <splash src="res/screen/ios/screen-ipad-portrait.png" height="1024" width="768" />
+      <splash src="res/screen/ios/screen-ipad-landscape.png" height="768" width="1024" />
+
+    </platform>
+
+
+
+</widget>

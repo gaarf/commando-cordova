@@ -1,0 +1,61 @@
+@import (less) "./fonts.less"; // must be first to support external @import (css)
+@import (less) "./variables.less";
+@import (less) "../../bower_components/bootstrap/less/mixins.less";
+
+
+html {
+  position: relative;
+  min-height: 100%;
+  user-select: none;
+}
+
+body {
+  visibility: hidden; // themes start the show
+  margin-bottom: @grid-gutter-width;
+}
+
+main {
+  margin-top: (@grid-gutter-width / 2) + @navbar-height;
+
+  .abs-right {
+    position: absolute;
+    right: (@grid-gutter-width / 2);
+  }
+}
+
+#alerts {
+  position: fixed;
+  z-index: 2001;
+  top: (@grid-gutter-width / 2);
+  left: 0;
+  right: 0;
+}
+
+
+.modal {
+
+  &.center {
+    .modal-dialog {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      min-width: 320px;
+      max-width: 630px;
+      width: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  .modal-body {
+    max-height: 400px;
+    overflow: auto;
+  }
+}
+
+.modal-backdrop {
+  // see https://github.com/twbs/bootstrap/pull/14724
+  z-index: ( @zindex-modal - 1 );
+  height: 100%;
+}
+
+

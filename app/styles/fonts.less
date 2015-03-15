@@ -1,0 +1,15 @@
+.font-face(@fontName: sans-serif; @fontFile: sans-serif; @fontWeight: normal; @fontStyle: normal) {
+    @font-face {
+        font-family: @fontName;
+        src: url('../fonts/@{fontFile}.ttf') format('truetype');
+        font-weight: @fontWeight;
+        font-style: @fontStyle;
+    }
+}
+
+.font-face(Roboto, Roboto-Thin, 100);
+.font-face(Roboto, Roboto-Light, 200);
+.font-face(Roboto, Roboto-Regular, 300);
+.font-face(Roboto, Roboto-Italic, 300, italic);
+.font-face(Roboto, Roboto-Black, 900);
+.font-face(Roboto, Roboto-BlackItalic, 900, italic);

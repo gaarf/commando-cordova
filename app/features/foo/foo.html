@@ -1,0 +1,17 @@
+<div class="container">
+
+
+<p class="btn-group" ng-init="confirmed=false">
+  <button class="btn btn-default" title="alert" data-content="hello world!" data-type="success" bs-alert>click here for an alert</button>
+  <button class="btn btn-default" title="alert" cordova-confirmable="confirmed=true" ng-click="doConfirm('Do it for reals?')" ng-switch="confirmed" ng-disabled="confirmed">
+    <span ng-switch-when="true">you confirmed</span>
+    <span ng-switch-default>click here to confirm</span>
+  </button>
+</p>
+
+
+<ng-include src="'assets/features/foo/ksink.html'"></ng-include>
+
+<pre>{{$state.current | json}}</pre>
+
+</div>

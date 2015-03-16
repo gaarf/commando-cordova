@@ -10,7 +10,7 @@ angular.module(PKG.name+'.feature.prototype')
       .state('prototype', {
         url: '/prototype',
         templateUrl: 'assets/features/prototype/prototype.html',
-        controller: function ($scope, myPlampApi) {
+        controller: function ($scope, $timeout, myPlampApi) {
 
 
           $scope.color = {
@@ -20,6 +20,8 @@ angular.module(PKG.name+'.feature.prototype')
           };
 
           $scope.css = {};
+
+          var debounce;
 
           $scope.$watchCollection('color', function(newVal) {
             angular.forEach(newVal, function (val, key) {
@@ -32,6 +34,13 @@ angular.module(PKG.name+'.feature.prototype')
             $scope.css.preview = {
               'background-color': 'rgb(' + [newVal.r, newVal.g, newVal.b].join(',') + ')'
             };
+
+            if(debounce) {
+              $timeout.cancel(debounce);
+            }
+            debounce = $timeout(function() {
+              $scope.doSendColor();
+            }, 500);
           });
 
           $scope.doSendColor = function () {

@@ -16,9 +16,13 @@ angular.module(PKG.name+'.services')
 
 
     this.singleColor = function (color) {
-      return this.colorArray((new Array(64)).map(function (v, i) {
-        return [i, color.r, color.g, color.b];
-      }));
+      var a = [];
+
+      for (var i = 0; i < 64; i++) {
+        a.push([i, parseInt(color.r, 10), parseInt(color.g, 10), parseInt(color.b, 10)]);
+      };
+
+      return this.colorArray(a);
     };
 
   });

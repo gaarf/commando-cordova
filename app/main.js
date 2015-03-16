@@ -3,7 +3,8 @@ angular
 
     angular.module(PKG.name+'.features', [
       PKG.name+'.feature.home',
-      PKG.name+'.feature.foo'
+      PKG.name+'.feature.foo',
+      PKG.name+'.feature.prototype'
     ]).name,
 
     angular.module(PKG.name+'.commons', [

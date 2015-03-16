@@ -1,0 +1,72 @@
+<div class="container">
+
+  <h1 class="page-header">
+    Set a color
+  </h1>
+
+  <form ng-submit="doSendColor()">
+
+    <div class="row">
+      <div class="col-sm-2">
+
+        <div class="color-preview" ng-style="css.preview"></div>
+
+      </div>
+      <div class="col-sm-10">
+
+        <div class="row">
+          <div class="col-xs-2 text-center">
+            <span class="badge" ng-style="css.r">
+              {{color.r}}
+            </span>
+          </div>
+          <label class="col-xs-2 text-right">
+            Red
+          </label>
+          <div class="col-xs-8">
+            <input type="range" min="0" max="255" ng-model="color.r" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2 text-center">
+            <span class="badge" ng-style="css.g">
+              {{color.g}}
+            </span>
+          </div>
+          <label class="col-xs-2 text-right">
+            Green
+          </label>
+          <div class="col-xs-8">
+            <input type="range" min="0" max="255" ng-model="color.g" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2 text-center">
+            <span class="badge" ng-style="css.b">
+              {{color.b}}
+            </span>
+          </div>
+          <label class="col-xs-2 text-right">
+            Blue
+          </label>
+          <div class="col-xs-8">
+            <input type="range" min="0" max="255" ng-model="color.b" />
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <hr />
+    <p>
+      <button type="submit" class="btn btn-primary btn-block">Do it!</button>
+    </p>
+
+  </form>
+
+
+</div>

@@ -1,5 +1,5 @@
-Commando Cordova
-================
+Plamp Cordova
+=============
 
 _It almost works._
 

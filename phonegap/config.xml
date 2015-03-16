@@ -2,17 +2,17 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
     xmlns:gap       = "http://phonegap.com/ns/1.0"
     xmlns:android   = "http://schemas.android.com/apk/res/android"
-    id              = "info.gaarf.cordova.commandoio"
+    id              = "info.gaarf.cordova.plamp"
     version         = "0.0.1">
 
     <name>
-      Commando.io
+      Plamp
     </name>
     <description>
-        Mobile app for Commando.io
+      Mobile app for Plamp control
     </description>
     <author href="http://gaarf.info">
-        Gaarf
+      Gaarf
     </author>
 
     <content src="index.html" />

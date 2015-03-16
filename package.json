@@ -1,7 +1,7 @@
 {
-  "name": "commando-cordova",
+  "name": "plamp-cordova",
   "version": "0.0.1",
-  "description": "Commando.io mobile app",
+  "description": "plamp mobile app",
   "scripts": {
     "postinstall": "./phonegap/setup.sh && npm run bower",
     "bower": "./node_modules/bower/bin/bower update --config.interactive=false",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaarf/commando-cordova"
+    "url": "https://github.com/gaarf/plamp-cordova"
   },
   "devDependencies": {
     "bower": "^1.3.10",

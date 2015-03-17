@@ -8,15 +8,15 @@ angular.module(PKG.name+'.feature.prototype')
     $stateProvider
 
       .state('prototype', {
+        abstract: true,
         url: '/prototype',
-        templateUrl: 'assets/features/prototype/prototype.html',
+        template: '<ui-view />',
         controller: function ($scope, $timeout, myPlampApi) {
 
-
           $scope.color = {
-            r: 0,
-            g: 0,
-            b: 0
+            r: 126,
+            g: 126,
+            b: 126
           };
 
           $scope.css = {};
@@ -39,15 +39,49 @@ angular.module(PKG.name+'.feature.prototype')
               $timeout.cancel(debounce);
             }
             debounce = $timeout(function() {
-              $scope.doSendColor();
+              myPlampApi.singleColor($scope.color);
             }, 500);
           });
 
-          $scope.doSendColor = function () {
-            myPlampApi.singleColor($scope.color);
-          };
 
+        }
+      })
 
+      .state('prototype.color', {
+        url: '/color',
+        templateUrl: 'assets/features/prototype/color.html'
+      })
+
+      .state('prototype.accel', {
+        url: '/accel',
+        templateUrl: 'assets/features/prototype/accel.html',
+        controller: function ($scope, $log, cordovaReady) {
+          var interval;
+          cordovaReady(function(){
+            interval = navigator.accelerometer.watchAcceleration(
+              function (accel) {
+                $scope.$apply(function () {
+                  $scope.accel = accel;
+
+                  angular.forEach({r:'x', g:'y', b:'z'}, function(v,k) {
+                    $scope.color[k] = Math.abs($scope.color[k] + Math.round(accel[v]))%255;
+                  });
+
+                });
+              },
+              function () {
+                $log.error('accelerometer failure');
+              },
+              {
+                frequency: 100
+              }
+            );
+          });
+          $scope.$on('$destroy', function () {
+            if(interval) {
+              navigator.accelerometer.clearWatch(interval);
+            }
+          });
         }
       })
 

@@ -26,6 +26,8 @@
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.statusbar" />
 
+    <gap:plugin name="org.apache.cordova.device-motion" />
+
     <preference name="Fullscreen" value="false" />
     <preference name="Orientation" value="portrait" />
     <preference name="DisallowOverscroll" value="false"/>

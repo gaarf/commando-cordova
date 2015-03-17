@@ -56,15 +56,31 @@ angular.module(PKG.name+'.feature.prototype')
         url: '/accel',
         templateUrl: 'assets/features/prototype/accel.html',
         controller: function ($scope, $log, cordovaReady) {
-          var interval;
+          var interval,
+              gradient = makeColorGradient(.1,.2,.3,0,0,0),
+              activeIndex = 0;
+
           cordovaReady(function(){
             interval = navigator.accelerometer.watchAcceleration(
               function (accel) {
                 $scope.$apply(function () {
                   $scope.accel = accel;
 
-                  angular.forEach({r:'x', g:'y', b:'z'}, function(v,k) {
-                    $scope.color[k] = Math.abs($scope.color[k] + Math.round(accel[v]))%255;
+                  if(1>Math.abs(accel.x)) {
+                    return;
+                  }
+
+                  activeIndex += (accel.x > 0 ? 1 : -1);
+
+                  if(activeIndex===gradient.length) {
+                    activeIndex = 0;
+                  }
+                  else if(activeIndex<0) {
+                    activeIndex = gradient.length-1;
+                  }
+
+                  angular.forEach(['r','g','b'], function (v) {
+                    $scope.color[v] = gradient[activeIndex][v];
                   });
 
                 });
@@ -89,3 +105,21 @@ angular.module(PKG.name+'.feature.prototype')
 
 
   });
+
+
+
+  function makeColorGradient(frequency1, frequency2, frequency3, phase1, phase2, phase3, center, width, len) {
+    if (center == undefined)   center = 128;
+    if (width == undefined)    width = 127;
+    if (len == undefined)      len = 50;
+
+    var out = [];
+    for (var i = 0; i < len; ++i) {
+      out.push({
+        r: Math.floor(Math.sin(frequency1*i + phase1) * width + center),
+        g: Math.floor(Math.sin(frequency2*i + phase2) * width + center),
+        b: Math.floor(Math.sin(frequency3*i + phase3) * width + center)
+      });
+    }
+    return out;
+  }

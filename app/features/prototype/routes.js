@@ -84,7 +84,7 @@ angular.module(PKG.name+'.feature.prototype')
                   if(1>Math.abs(accel.x)) {
                     return;
                   }
-                  $scope.setActive($scope.activeIndex + (accel.x > 0 ? 1 : -1));
+                  $scope.setActive($scope.activeIndex + (accel.x < 0 ? 1 : -1));
                 });
               },
               function () {

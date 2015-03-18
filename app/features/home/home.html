@@ -25,6 +25,14 @@
     </ul>
   </div>
 
+  <p>
+    <input type="text" ng-model="$storage.host" class="form-control" />
+  </p>
+
+  <div ng-show="device">
+    <pre>{{$storage | json}}</pre>
+  </div>
+
   <div ng-show="device">
     <pre>{{device | json}}</pre>
   </div>

@@ -18,7 +18,7 @@ angular.module(PKG.name+'.feature.home')
       .state('home', {
         url: '/',
         templateUrl: 'assets/features/home/home.html',
-        controller: function (cordovaReady, $scope) {
+        controller: function (cordovaReady, $scope, $localStorage) {
 
           cordovaReady().then(function () {
             $scope.device = window.device;
@@ -27,6 +27,7 @@ angular.module(PKG.name+'.feature.home')
 
           $scope.version = PKG.v;
 
+          $scope.$storage = $localStorage;
         }
       })
 

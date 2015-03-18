@@ -6,6 +6,15 @@
 
   <pre>{{accel | json}}</pre>
 
+
+  <ul class="gradient">
+    <li ng-repeat="color in gradient"
+        ng-class="{active: $index == activeIndex}"
+        ng-style="{'background-color':'rgb('+color.r+','+color.g+','+color.b+')'}"
+        ng-click="setActive($index)"
+    ></li>
+  </ul>
+
   <div class="row">
     <div class="col-xs-6">
 
@@ -15,7 +24,7 @@
     <div class="col-xs-6">
 
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-5 text-center">
           <span class="badge" ng-style="css.r">
             {{color.r}}
           </span>
@@ -26,7 +35,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-5 text-center">
           <span class="badge" ng-style="css.g">
             {{color.g}}
           </span>
@@ -37,7 +46,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-5 text-center">
           <span class="badge" ng-style="css.b">
             {{color.b}}
           </span>

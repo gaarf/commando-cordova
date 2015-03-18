@@ -14,5 +14,24 @@ body.state-prototype {
   }
 
 
+  &.state-prototype-accel {
+    ul.gradient {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      li {
+        overflow: hidden;
+        text-align: center;
+        line-height: 2;
+        flex-grow: 1;
+        height: 30px;
+        margin-right: 1px;
+        &.active {
+          height: 50px;
+        }
+      }
+    }
+  }
 
 }

@@ -57,32 +57,34 @@ angular.module(PKG.name+'.feature.prototype')
         templateUrl: 'assets/features/prototype/accel.html',
         controller: function ($scope, $log, cordovaReady) {
           var interval,
-              gradient = makeColorGradient(.1,.2,.3,0,0,0),
+              gradient = makeColorGradient(.1,.2,.3,0,0,0,40),
               activeIndex = 0;
+
+          $scope.gradient = gradient;
+          $scope.activeIndex = activeIndex;
+
+          $scope.setActive = function (i) {
+            if(i>=gradient.length) {
+              i = 0;
+            }
+            else if(i<0) {
+              i = gradient.length-1;
+            }
+            $scope.activeIndex = i;
+            angular.forEach(['r','g','b'], function (v) {
+              $scope.color[v] = gradient[i][v];
+            });
+          };
 
           cordovaReady(function(){
             interval = navigator.accelerometer.watchAcceleration(
               function (accel) {
                 $scope.$apply(function () {
                   $scope.accel = accel;
-
                   if(1>Math.abs(accel.x)) {
                     return;
                   }
-
-                  activeIndex += (accel.x > 0 ? 1 : -1);
-
-                  if(activeIndex===gradient.length) {
-                    activeIndex = 0;
-                  }
-                  else if(activeIndex<0) {
-                    activeIndex = gradient.length-1;
-                  }
-
-                  angular.forEach(['r','g','b'], function (v) {
-                    $scope.color[v] = gradient[activeIndex][v];
-                  });
-
+                  $scope.setActive($scope.activeIndex + (accel.x > 0 ? 1 : -1));
                 });
               },
               function () {
@@ -108,7 +110,7 @@ angular.module(PKG.name+'.feature.prototype')
 
 
 
-  function makeColorGradient(frequency1, frequency2, frequency3, phase1, phase2, phase3, center, width, len) {
+  function makeColorGradient(frequency1, frequency2, frequency3, phase1, phase2, phase3, len, center, width) {
     if (center == undefined)   center = 128;
     if (width == undefined)    width = 127;
     if (len == undefined)      len = 50;
